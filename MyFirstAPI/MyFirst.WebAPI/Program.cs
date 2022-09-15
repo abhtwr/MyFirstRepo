@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using MyFirst.WebAPI.Data;
 using MyFirst.WebAPI.Repositories;
@@ -16,6 +17,16 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 });
 builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer ( c =>
+//    {
+//        c.Audience = "ClientID";
+//        c.Authority = new Uri("baseURL", "OAUthAuthority").ToString();
+//        c.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+//        {
+//            ValidateAudience = false,
+//        };
+//    }).Services
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
